@@ -8,11 +8,21 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "pandas (>=2.2.3,<3.0.0)",
+    "altair (>=5.5.0,<6.0.0)"
 ]
 
 [tool.poetry]
 packages = [{include = "titerplot", from = "src"}]
 
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+ruff = "^0.11.0"
+ipython = "^9.0.2"
+jupyterlab = "^4.3.6"
+ipykernel = "^6.29.5"
+black = "^25.1.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
