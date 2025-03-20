@@ -6,12 +6,67 @@ Plotting viral titers from experiments with a factorial/combinitorial design wit
 
 ## Install
 
-Coming...
+```bash
+# Requires Python > 3.12
+pip install titerplot
+```
 
 ## Use
 
-Coming...
+The primary function of this library is `plot_titers`, which can be imported directly from the package:
+
+```python
+from titerplot import plot_titers
+
+# Example usage
+plot_titers(
+    data,
+    titer_col="Titer",
+    condition_cols=["Condition_A", "Condition_B", "Condition_C", "Condition_D"],
+    facet_col="Facet",
+    color_col="Virus"
+)
+```
+
+For a complete demonstration of the library's capabilities, check out the [plotting demo notebook](docs/plotting-demo.ipynb). For an example of the ideal data format, check out the [dummy_data](data/dummy_titers.csv). 
 
 ## Develop
 
-Coming...
+This project uses [Poetry](https://python-poetry.org/) for dependency management and packaging.
+
+### Setup development environment
+
+```bash
+# Clone the repository
+git clone ...
+cd titerplot
+
+# Install dependencies with Poetry
+poetry install
+
+# Activate the virtual environment
+poetry shell
+```
+
+### Run tests
+
+Pytest runs the demo notebooks and saves the rendered notebooks to `/docs/`.
+
+```bash
+# Run pytest
+pytest
+```
+
+### Project structure
+
+```
+.
+├── data/               # Sample data files
+├── docs/               # Rendered Demo notebooks
+├── notebooks/          # Development notebooks
+├── src/                # Source code
+│   └── titerplot/      # Main package
+├── tests/              # Test files
+├── pyproject.toml      # Package configuration
+└── poetry.lock         # Locked dependencies
+```
