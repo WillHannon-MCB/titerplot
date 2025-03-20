@@ -31,6 +31,7 @@ ipython = "^9.0.2"
 jupyterlab = "^4.3.6"
 ipykernel = "^6.29.5"
 black = "^25.1.0"
+vl-convert-python = "^1.7.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
