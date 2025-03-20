@@ -38,7 +38,7 @@ This project uses [Poetry](https://python-poetry.org/) for dependency management
 
 ```bash
 # Clone the repository
-git clone ...
+git clone git@github.com:WillHannon-MCB/titerplot.git
 cd titerplot
 
 # Install dependencies with Poetry
