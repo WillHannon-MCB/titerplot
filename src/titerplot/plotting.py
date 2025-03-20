@@ -18,6 +18,12 @@ def plot_titers(
     point_size: int = 100,
     filled: bool = True,
     text_size: int = 15,
+    title_size: int = 20,
+    axis_title_size: int = 16,
+    axis_label_size: int = 14,
+    legend_title_size: int = 16,
+    legend_label_size: int = 14,
+    facet_title_size: int = 16,
 ) -> alt.VConcatChart:
     """
     Create an Altair visualization of viral titer data from factorial/combinatorial experiments.
@@ -57,6 +63,19 @@ def plot_titers(
         Whether to fill the points in the strip plot.
     text_size : int, default=15
         Size of the text in the condition matrix.
+    title_size : int, default=20
+        Size of the chart title text.
+    axis_title_size : int, default=16
+        Size of the axis title text.
+    axis_label_size : int, default=14
+        Size of the axis label text.
+    legend_title_size : int, default=16
+        Size of the legend title text.
+    legend_label_size : int, default=14
+        Size of the legend label text.
+    facet_title_size : int, default=16
+        Size of the facet title text.
+
 
     Returns
     -------
@@ -135,7 +154,12 @@ def plot_titers(
             x=alt.X(
                 "ID:N",
                 axis=alt.Axis(
-                    title=None, domain=False, ticks=True, labels=False, grid=False
+                    title=None,
+                    domain=False,
+                    ticks=True,
+                    labels=False,
+                    grid=False,
+                    labelFontSize=axis_label_size,
                 ),
             )
         )
@@ -154,7 +178,13 @@ def plot_titers(
             x=alt.X("ID:N", axis=None),
             y=alt.Y(
                 "Condition:N",
-                axis=alt.Axis(title=None, domain=False, grid=False, ticks=False),
+                axis=alt.Axis(
+                    title=None,
+                    domain=False,
+                    grid=False,
+                    ticks=False,
+                    labelFontSize=axis_label_size,
+                ),
             ),
             text="Text:N",
         )
@@ -168,6 +198,10 @@ def plot_titers(
         titer_col,
         title=y_axis_label,
         scale=alt.Scale(type="log" if log_scale else "linear"),
+        axis=alt.Axis(
+            titleFontSize=axis_title_size,
+            labelFontSize=axis_label_size,
+        ),
     )
     strip_plot = strip_plot.encode(
         y=y_axis,
@@ -177,7 +211,12 @@ def plot_titers(
     if facet_col is not None:
         strip_plot = strip_plot.encode(
             column=alt.Column(
-                facet_col, header=alt.Header(title=None, labels=show_facet_title)
+                facet_col,
+                header=alt.Header(
+                    title=None,
+                    labels=show_facet_title,
+                    labelFontSize=facet_title_size,
+                ),
             )
         )
         condition_matrix = condition_matrix.encode(
@@ -188,7 +227,11 @@ def plot_titers(
         strip_plot = strip_plot.encode(
             color=alt.Color(
                 color_col,
-                legend=alt.Legend(title=color_col),
+                legend=alt.Legend(
+                    title=color_col,
+                    titleFontSize=legend_title_size,
+                    labelFontSize=legend_label_size,
+                ),
             ),
         )
     # Add the shape column if provided
@@ -196,7 +239,11 @@ def plot_titers(
         strip_plot = strip_plot.encode(
             shape=alt.Shape(
                 shape_col,
-                legend=alt.Legend(title=shape_col),
+                legend=alt.Legend(
+                    title=shape_col,
+                    titleFontSize=legend_title_size,
+                    labelFontSize=legend_label_size,
+                ),
             ),
         )
 
@@ -207,7 +254,15 @@ def plot_titers(
         )
 
     # Combine the strip plot and condition matrix without vertical spacing
-    title = title if title is not None else ""
-    chart = alt.vconcat(strip_plot, condition_matrix, spacing=0).properties(title=title)
+    title_config = alt.TitleParams(
+        text=title if title is not None else "",
+        fontSize=title_size,
+        anchor="middle",
+        align="center",
+        offset=20,
+    )
+    chart = alt.vconcat(strip_plot, condition_matrix, spacing=0).properties(
+        title=title_config
+    )
 
     return chart
