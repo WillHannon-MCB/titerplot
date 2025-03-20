@@ -1,7 +1,7 @@
 [project]
 name = "titerplot"
 version = "0.1.0"
-description = ""
+description = "A Python package for plotting titer data with factorial/combinatorial designs."
 authors = [
     {name = "WillHannon-MCB",email = "hannonww@gmail.com"}
 ]
@@ -11,10 +11,18 @@ dependencies = [
     "pandas (>=2.2.3,<3.0.0)",
     "altair (>=5.5.0,<6.0.0)"
 ]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/WillHannon-MCB/titerplot"
+"Bug Tracker" = "https://github.com/WillHannon-MCB/titerplot/issues"
 
 [tool.poetry]
 packages = [{include = "titerplot", from = "src"}]
-
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.5"
