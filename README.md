@@ -2,7 +2,7 @@
 
 Author: [Will Hannon](https://willhannon.com/)
 
-Plotting viral titers from experiments with a factorial/combinitorial design with [Altair](https://altair-viz.github.io/).
+Plotting viral titers from experiments with a factorial/combinatorial design with [Altair](https://altair-viz.github.io/).
 
 ## Install
 
