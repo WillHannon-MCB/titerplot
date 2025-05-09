@@ -231,6 +231,8 @@ def plot_titers(
                     title=color_col,
                     titleFontSize=legend_title_size,
                     labelFontSize=legend_label_size,
+                    labelLimit=1000,
+                    titleLimit=1000,
                 ),
             ),
         )
@@ -243,6 +245,8 @@ def plot_titers(
                     title=shape_col,
                     titleFontSize=legend_title_size,
                     labelFontSize=legend_label_size,
+                    labelLimit=1000,
+                    titleLimit=1000,
                 ),
             ),
         )
